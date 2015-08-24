@@ -7,7 +7,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<bod>
+<div class="nav">
+
+	<div class="pull-left" >
+		<%= link_to "ToDo list Homepage", root_path, class: "btn btn-info" %>
+		<% if current_user %> 
+		<%= link_to "ToDo Lists", lists_path, class: "btn btn-success" %>
+		<% end %>
+	</div>
+	<div class="pull-right">
+		<% if current_user %> 
+			<%= link_to (current_user.username || current_user.email), edit_user_registration_path %> is signed in! <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+		<% else %>
+			<%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign UP", new_user_registration_path %>
+		<% end %>
+	</div>
+</div>
+ <div class="container">
 	<% if flash[:notice] %>
 		<div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert">&times, </button>
@@ -19,8 +36,9 @@
 			<%= flash[:error] %>
 		</div>
 	<% end %>
-<p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+ </div>
+	
+
 <%= yield %>
 
 </body>

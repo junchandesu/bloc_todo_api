@@ -1,0 +1,11 @@
+<%= form_for list do |f| %>
+ 
+  <div class="form-group">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true, class: 'form-control' %> 
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: 'btn btn-default' %>
+  </div>
+<% end %>

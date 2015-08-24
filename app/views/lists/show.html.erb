@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-10">
+			<h1>Todo List: <%= @list.title %></h1>
+			<%= render @list.items %>
+			<br/>
+			<br/>
+			<%= render partial: "items/newItems", locals: { list: @list, item: @list.items.build }  %>
+		</div>
+
+	</div>
+</div>
+

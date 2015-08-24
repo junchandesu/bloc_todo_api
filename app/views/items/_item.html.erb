@@ -1,0 +1,9 @@
+<%= content_tag_for :div, item, class: 'col-md-8' do %>
+				<b><p>*<%= item.todo %><p><b>
+				<p> Memo:<%= item.memo %> |
+					<%= link_to "edit", edit_list_item_path(item.list, item) %> | 
+					<%= link_to "Delete", list_item_path(item.list, item), method: :delete %></p>
+				<br/>
+				<br/>
+
+<% end %>
