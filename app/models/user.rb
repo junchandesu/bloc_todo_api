@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
      [first_name, last_name].join(" ")
   end
 
+  def authenticated?(username, token)
+    username == User.username && token = User.token
+
+  end
+
   protected
 
   def generate_token
@@ -18,4 +23,6 @@ class User < ActiveRecord::Base
   		break random_token unless User.exists?(token: random_token)
   	end
   end
+
+
 end

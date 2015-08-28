@@ -15,11 +15,15 @@ class Api::ListsController < ApiController
    		render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
    	end
    end
- 	
+
+  def edit
+    list = @current_user.lists.find(params[:id])
+ 	end
+
  	def update
- 		user = User.find(params[:user_id])
- 		list = user.lists.find(params[:id])
- 		if list.update(list_params) && list.update_ok?(list.permissions)
+ 		
+ 		list = @current_user.lists.find(params[:id])
+ 		if list.update_ok?(list.permissions) && list.update(list_params) 
  			render json: list
  		else
  			render json: { error: list.errors.full_message }, status: :unprocessable_entity
