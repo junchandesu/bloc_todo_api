@@ -3,7 +3,10 @@ class Api::ItemsController < ApiController
 
    def index
    	items = Item.all
+    render json: items, each_serializer: ItemSerializer
    end
+
+   
 
    def create
    	 list = List.find(params[:list_id])
