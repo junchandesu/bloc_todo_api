@@ -1,5 +1,7 @@
 require 'faker'
 
+status = ['private', 'viewable','open', 'public', 'restricted']
+done = [true, false]
 # User
 10.times do
 	user = User.new(
@@ -26,6 +28,7 @@ users = User.all
 20.times do
   list = List.new(
    title: Faker::Hacker.verb,
+   permissions: status.sample,
    user: users.sample
   )
   list.save!
@@ -37,6 +40,7 @@ lists = List.all
   item = Item.new(
     todo: Faker::Team.creature,
     memo: Faker::Lorem.sentence,
+    complete: done.sample,
     list: lists.sample
   )
   item.save!

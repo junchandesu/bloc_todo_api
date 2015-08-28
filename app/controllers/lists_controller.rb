@@ -15,12 +15,13 @@ before_action :set_list, only: [:show, :update, :edit, :destroy]
   end
 
   def update
-  	if @list.update(list_params)
-  		redirect_to list_path(@list), notice: "List is updated."
-  	else
-  		render :edit
+    # I can change the condition backword to change the permissions at first
+   if @list.update_ok?(@list.permissions) && @list.update(list_params)
+      redirect_to lists_path, notice: "List is updated."
+   else
+  		redirect_to lists_path
   		flash[:error] = "List was not updated."
-  	end
+   end
   end
 
   def new
@@ -28,7 +29,7 @@ before_action :set_list, only: [:show, :update, :edit, :destroy]
   end
 
   def create
-  	@list = current_user.lists.build(list_params)
+    @list = current_user.lists.build(list_params)
   	if @list.save
   		redirect_to lists_path, notice: "List is created."
   	else
@@ -50,10 +51,10 @@ before_action :set_list, only: [:show, :update, :edit, :destroy]
   private
 
   def list_params
-  	params.require(:list).permit(:title)
+  	params.require(:list).permit(:permissions, :title)
   end
 
   def set_list
-  	@list = List.find(params[:id])
+    @list = List.find(params[:id])
   end
 end

@@ -4,7 +4,15 @@
     <%= f.label :title %><br />
     <%= f.text_field :title, autofocus: true, class: 'form-control' %> 
   </div>
-
+  	<h3>Only private, viewable or open permission is allowed to update</h3>
+  	<%= f.radio_button :permissions, 'private' %> 
+  	<%= label :permissions_private, 'Private' %>
+  	<%= f.radio_button :permissions, 'open' %>
+  	<%= label :permissions_open, 'Open' %>
+  	<%= f.radio_button :permissions, 'viewable' %>
+  	<%= label :permissions_viewable, 'viewable' %>
+  	<%= f.radio_button :permissions, 'restricted' %>
+  	<%= label :permissions_restricted, 'Restricted' %>
   <div class="actions">
     <%= f.submit "Save", class: 'btn btn-default' %>
   </div>

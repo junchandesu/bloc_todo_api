@@ -30,6 +30,8 @@ gem 'devise'
 gem 'active_model_serializers'
 # create data in each table
 gem 'faker'
+# authorization
+gem 'pundit'
 
 
 # Use ActiveModel has_secure_password

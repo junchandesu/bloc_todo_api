@@ -1,2 +1,9 @@
-<h1>Lists#edit</h1>
-<p>Find me in app/views/lists/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10">
+			<h1>Update <%= @list.title %></h1>
+			
+		<%= render partial: 'lists/form', locals: {list: @list} %>
+		</div>
+	</div>
+</div>

@@ -44,7 +44,7 @@ before_action :set_item, only: [:show, :update, :edit, :destroy]
   private
 
   def item_params
-  	params.require(:item).permit(:todo, :memo)
+  	params.require(:item).permit(:todo, :memo, :complete)
   end
 
   def set_item
